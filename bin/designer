@@ -193,15 +193,7 @@ def execute(): #pylint: disable=unused-variable
 
         print('...denoising...')
         # local denoising, no shrinkage:
-        Signal, Sigma, Nparameters = mp.denoise(dwi, kernel=[5,5,5], shinkage='threshold')
-        # nonlocal denoising, no shrinkage
         Signal, Sigma, Nparameters = mp.denoise(dwi, M=125, kernel=[7,7,7], shinkage='threshold')
-        # local denoising, shrinkage
-        Signal, Sigma, Nparameters = mp.denoise(dwi, kernel=[5,5,5], shinkage='frobenius')
-        # nonlocal denoising, shrinkage
-        Signal, Sigma, Nparameters = mp.denoise(dwi, M=125, kernel=[7,7,7], shinkage='frobenius')
-
-        Signal, Sigma, _ = mp.denoise(dwi, M=125, kernel=[7,7,7])
         Sigma[np.isnan(Sigma)] = 0
         
         niout = ni.Nifti1Image(Signal, nii.affine, nii.header)
