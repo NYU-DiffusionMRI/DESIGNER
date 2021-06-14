@@ -15,6 +15,8 @@ DESIGNER is modular and can easily be tuned to study-specific needs or requireme
 
 The DESIGNER pipeline has been evaluated and described in more technical detail in following publication: Ades-Aron et al. NeuroImage 183: 532-543 (2018).  
 
+Instructions for proper installation can be found here: https://github.com/NYU-DiffusionMRI/DESIGNER/wiki/DESIGNER-installation
+
 Don’t hesitate to reach out to Jelle.Veraart@nyulangone.org or Benjamin.Ades-Aron@nyulangone.org for feedback, suggestions, questions, or comments.
 
 # Recommended Usage 
