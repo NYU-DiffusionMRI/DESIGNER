@@ -246,11 +246,11 @@ def execute(): #pylint: disable=unused-variable
                 run.command('mrconvert -coord 3 ' + idxlist[idx] + ' working.mif dwipretf' + str(idx) + '.mif')
                 run.command('dwiextract -bzero dwipretf' + str(idx) + '.mif - | mrconvert -coord 3 0 - b0pretf' + str(idx) + '.mif')
                 if idx > 0:
-                    run.command('mrregister -type rigid -noreorientation -rigid rigidXform' + str(idx) + 'to0.txt b0pretf' + str(idx) + '.mif b0tf0.mif')
-                    run.command('mrtransform -linear rigidXform' + str(idx) + 'to0.txt dwipretf' + str(idx) + '.mif dwitf' + str(idx) + '.mif')
+                    run.command('mrregister -type rigid -noreorientation -rigid rigidXform' + str(idx) + 'to0.txt b0pretf' + str(idx) + '.mif b0pretf0.mif')
+                    run.command('mrtransform -reorient_fod no -linear rigidXform' + str(idx) + 'to0.txt dwipretf' + str(idx) + '.mif dwitf' + str(idx) + '.mif')
                     miflist.append('dwitf' + str(idx) + '.mif')
             DWImif = ' '.join(miflist)
-            run.command('mrcat -axis 3 dwitf0.mif ' + DWImif + ' dwitf.mif')
+            run.command('mrcat -axis 3 dwipretf0.mif ' + DWImif + ' dwitf.mif')
             run.command('mrconvert -force dwitf.mif working.mif')
 
     # epi + eddy current and motion correction
