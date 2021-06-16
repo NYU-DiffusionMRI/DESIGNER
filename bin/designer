@@ -315,7 +315,7 @@ def execute(): #pylint: disable=unused-variable
             miflist = []
             for idx,i in enumerate(DWInlist):
                 run.command('mrconvert -coord 3 ' + idxlist[idx] + ' working.mif dwiprebc' + str(idx) + '.mif')
-                run.command('dwibiascorrect ants -bias biasfield.mif dwiprebc' + str(idx) + '.mif dwibc' + str(idx) + '.mif')
+                run.command('dwibiascorrect ants -bias biasfield' + str(idx) + '.mif dwiprebc' + str(idx) + '.mif dwibc' + str(idx) + '.mif')
                 miflist.append('dwibc' + str(idx) + '.mif')
                 DWImif = ' '.join(miflist)
             run.command('mrcat -axis 3 ' + DWImif + ' dwibc.mif')
